@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class QuanLyNhanVien {
-    List<NhanVien> nhanVienList = new ArrayList<>();
+     List<NhanVien> nhanVienList = new ArrayList<>();
 
     public List<NhanVien> getNhanVienList() {
         return nhanVienList;

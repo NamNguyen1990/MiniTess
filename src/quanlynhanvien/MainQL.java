@@ -10,6 +10,7 @@ public class MainQL {
         Scanner sc = new Scanner(System.in);
         Scanner nhapChu = new Scanner(System.in);
         int luaChon;
+        quanLyNhanVien.setNhanVienList(GhiDocFile.readFromFile("KtraMD2.csv",quanLyNhanVien.nhanVienList));
         System.out.println("=====Menu====");
         System.out.println("0 - Hiển thị tất cả Nhân viên");
         System.out.println("1 - Thêm 1 Nhân viên mới");
@@ -52,8 +53,7 @@ public class MainQL {
 
                 NhanVien nhanVien = new NhanVien(soCMND,ten,loai,trangThai,luong);
                 quanLyNhanVien.them(nhanVien);
-                GhiDocFile.writeToFile(quanLyNhanVien.nhanVienList);
-                GhiDocFile.readFromFile(quanLyNhanVien.nhanVienList);
+                GhiDocFile.writeToFile("KtraMD2.csv",quanLyNhanVien.nhanVienList);;
 
             }
             else if (luaChon == 2) {
