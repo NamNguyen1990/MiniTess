@@ -8,7 +8,7 @@ public class GhiDocFile {
     public static void writeToFile (String path,List<NhanVien> nhanVienList) throws IOException {
         File file = new File(path);
         PrintWriter pw = new PrintWriter(file);
-        String str = "số CMND, tên, loại, trạng Thái, lương" +"\n";
+        String str = "Số CMND, Tên, Loại, Trạng Thái, Lương" +"\n";
         for (NhanVien i: nhanVienList) {
             str += i.getSoCMND() + "," + i.getTen() + "," + i.getLoai() + "," + i.getTrangThai() + "," + i.getLuong() +"\n";
         }

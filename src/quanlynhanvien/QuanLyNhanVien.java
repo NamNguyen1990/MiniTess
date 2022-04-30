@@ -25,9 +25,7 @@ public class QuanLyNhanVien {
             check = true;
         }
         if (check == false) {
-            System.out.println("Danh sách chưa có nhân viên nào!");
+            System.out.println("Chưa có nhân viên nào được thêm mới!");
         }
     }
-
-
 }

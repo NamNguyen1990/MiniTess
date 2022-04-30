@@ -61,11 +61,11 @@ public class NhanVien {
     @Override
     public String toString() {
         return "NhanVien{" +
-                "soCMND = " + soCMND +
-                ", ten = " + ten  +
-                ", loai = " + loai +
-                ", trangThai = " + trangThai  +
-                ", luong = " + luong  +
+                "SốCMND = " + soCMND +
+                ", Tên = " + ten  +
+                ", Loại = " + loai +
+                ", TrạngThái = " + trangThai  +
+                ",  Lương = " + luong  +
                 '}';
     }
 }
