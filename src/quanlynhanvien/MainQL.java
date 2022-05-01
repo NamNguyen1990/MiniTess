@@ -22,14 +22,15 @@ public class MainQL {
         System.out.println("2 - Tìm kiếm thông tin nhân viên theo số CMND");
         System.out.println("3 - Tìm kiếm thông tin nhân viên theo tên");  // Tìm kiếm và hiển thị tất cả nhân viên có tên giống nhau!
         System.out.println("4 - In ra danh sách nhân viên Fulltime/Parttime");
-//        System.out.println("5 - In ra danh sách nhân viên Parttime");
+        System.out.println("5 - Xóa vĩnh viễn 1 nhân viên trong danh sách theo tên nhập vào");  // Chỉ xóa được người đầu tiên hoặc tên là duy nhất
         System.out.println("6 - Sửa thông tin nhân viên theo Tên nhập vào"); // Chỉ sửa được người đầu tiên tìm thấy!
         System.out.println("7 - Sửa thông tin nhân viên theo số CMND nhập vào");
-        System.out.println("8 - Thay đổi trạng thái nhân viên (Từ Đang làm --> Thôi việc, hoặc ngược lại)");
+        System.out.println("8 - Thay đổi trạng thái nhân viên (Từ Đang làm --> Thôi việc)");
         System.out.println("9 - Hiển thị lương nhân viên");
         System.out.println("10 - Hiển thị danh sách nhân viên có sẵn");
         System.out.println("11 - Xóa vĩnh viễn 1 nhân viên trong danh sách theo số CMND");
-        System.out.println("12 - Thoát");
+        System.out.println("12 - Xem lại danh sách Menu!");
+        System.out.println("13 - Thoát");
 
         do {
             boolean check2 = false;
@@ -131,6 +132,15 @@ public class MainQL {
 //            else if (luaChon == 5) {
 //                quanLyNhanVien.timKiemPartTime();
 //            }
+
+            else if (luaChon == 5) {
+                System.out.println("Nhập tên nhân viên muốn xóa");
+                String tenX= nhapChu.nextLine();
+                quanLyNhanVien.xoaTen(tenX);
+                GhiDocFile.writeToFile("KtraMD2.csv",quanLyNhanVien.nhanVienList);
+
+            }
+
             else if (luaChon == 6) {
                 System.out.println("Nhập Tên muốn sửa");
                 String tenS = nhapChu.nextLine();
@@ -245,7 +255,7 @@ public class MainQL {
 
             }
             else if (luaChon == 9) {
-
+                quanLyNhanVien.luong();
             }
             else if (luaChon == 10) {
                 System.out.println("Danh sách nhân viên đã có sẵn");
@@ -253,13 +263,46 @@ public class MainQL {
             }
             else if (luaChon == 11) {
 
+                int soCMNDX = -1;
+                boolean check9 = false;
+                while (!check9) {
+                    System.out.println("Nhập số CMND của nhân viên muốn xóa");
+                    try {
+                        soCMNDX = sc.nextInt();
+                        check9 = true;
+                    } catch (Exception e) {
+                        System.out.println(ANSI_RED + "Chỉ được nhập số" + ANSI_RESET);
+                        sc.nextLine();
+                    }
+                }
+
+                quanLyNhanVien.xoasoCMND(soCMNDX);
+                GhiDocFile.writeToFile("KtraMD2.csv",quanLyNhanVien.nhanVienList);
+
             }
 
-        }while (luaChon != 12);
+            else if (luaChon == 12) {
+                System.out.println("=====Menu====");
+                System.out.println(ANSI_RED + "NOTE: Nhập 10 lần đầu tiên để hiện thị nhân viên có sẵn trước khi thêm mới, nếu không sẽ mất toàn bộ dữ liệu nhân viên!" + ANSI_RESET);
+                System.out.println("0 - Hiển thị tất cả Nhân viên");
+                System.out.println("1 - Thêm 1 Nhân viên mới");
+                System.out.println("2 - Tìm kiếm thông tin nhân viên theo số CMND");
+                System.out.println("3 - Tìm kiếm thông tin nhân viên theo tên");  // Tìm kiếm và hiển thị tất cả nhân viên có tên giống nhau!
+                System.out.println("4 - In ra danh sách nhân viên Fulltime/Parttime");
+                System.out.println("5 - Xóa vĩnh viễn 1 nhân viên trong danh sách theo tên nhập vào");  // Chỉ xóa được người đầu tiên hoặc tên là duy nhất
+                System.out.println("6 - Sửa thông tin nhân viên theo Tên nhập vào"); // Chỉ sửa được người đầu tiên tìm thấy!
+                System.out.println("7 - Sửa thông tin nhân viên theo số CMND nhập vào");
+                System.out.println("8 - Thay đổi trạng thái nhân viên (Từ Đang làm --> Thôi việc)");
+                System.out.println("9 - Hiển thị lương nhân viên");
+                System.out.println("10 - Hiển thị danh sách nhân viên có sẵn");
+                System.out.println("11 - Xóa vĩnh viễn 1 nhân viên trong danh sách theo số CMND");
+                System.out.println("12 - Xem lại danh sách Menu!");
+                System.out.println("13 - Thoát");
+            }
+
+        }while (luaChon != 13);
 
     }
-
-
 
     public static final String ANSI_RED = "\u001B[31m";
     public static final String ANSI_RESET = "\u001B[0m";

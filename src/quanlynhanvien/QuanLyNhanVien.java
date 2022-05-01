@@ -18,6 +18,7 @@ public class QuanLyNhanVien {
 
     public void them (NhanVien nhanVien) {
         nhanVienList.add(nhanVien);
+        System.out.println("Bạn đã thêm thành công 1 nhân viên mới");
     }
 
     public void hienThi() {
@@ -127,24 +128,54 @@ public class QuanLyNhanVien {
             nhanVienList.get(indexOf).setTrangThai("Thôi việc");
             nhanVienList.get(indexOf).setLuong(0);
             nhanVienList.get(indexOf).setLoai("Thôi việc");
+            System.out.println("Bạn đã cập nhật thành công!");
         }
     }
 
+    public void luong() {
+        int sum1 = 0;
+        int sum2 = 0;
+        int sum3 = 0;
+        for (int i=0; i<nhanVienList.size(); i++) {
+            if (nhanVienList.get(i).getLoai().contains("Fulltime")) {
+                sum1 += nhanVienList.get(i).getLuong();
+            }
+        }
+        System.out.println("Tổng lương của nhân viên Fulltime là: " + sum1);
+
+        for (int i=0; i<nhanVienList.size(); i++) {
+            if (nhanVienList.get(i).getLoai().contains("Parttime")) {
+                sum2 += nhanVienList.get(i).getLuong();
+            }
+        }
+        System.out.println("Tổng lương của nhân viên Parttime là: " + sum2);
 
 
+        for (int i=0; i<nhanVienList.size(); i++) {
+                sum3 += nhanVienList.get(i).getLuong();
+        }
+        System.out.println("Tổng lương của toàn bộ nhân viên là: " + sum3);
 
+    }
 
+    public void xoaTen (String ten) {
+        int indexOf = timKiemTen1(ten);
+        if (indexOf == -1) {
+            System.out.println("Không có nhân viên nào có tên này!");
+        } else {
+            nhanVienList.remove(indexOf);
+            System.out.println("Nhân viên trên đã được xóa khỏi danh sách");
+        }
+    }
 
-
-
-
-
-
-
-
-
-
-
-
+    public void xoasoCMND (int soCMND) {
+        int indexOf = timKiemsoCMND(soCMND);
+        if (indexOf == -1) {
+            System.out.println("Không có nhân viên nào có số CMND này!");
+        } else {
+            nhanVienList.remove(indexOf);
+            System.out.println("Nhân viên trên đã được xóa khỏi danh sách");
+        }
+    }
 
 }
