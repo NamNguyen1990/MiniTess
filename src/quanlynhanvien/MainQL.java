@@ -49,7 +49,7 @@ public class MainQL {
             }
 
             if (luaChon == 0) {
-
+                System.out.println(ANSI_BLUE + "====Danh sách nhân viên====" + ANSI_RESET);
                 quanLyNhanVien.hienThi();
 
             }
@@ -103,8 +103,18 @@ public class MainQL {
 //                GhiDocFile.writeToFile("KtraMD2.csv",quanLyNhanVien.nhanVienList);
             }
             else if (luaChon == 2) {
-                System.out.println("Nhập số CMND cần tìm");
-                int soCMND = sc.nextInt();
+                int soCMND = -1;
+                boolean check = false;
+                while (!check) {
+                    System.out.println("Nhập số CMND cần tìm");
+                    try {
+                        soCMND = sc.nextInt();
+                        check = true;
+                    } catch (Exception e) {
+                        System.out.println(ANSI_RED + "Chỉ được nhập số" + ANSI_RESET);
+                        sc.nextLine();
+                    }
+                }
                 quanLyNhanVien.timKiemCMND(soCMND);
 
             }
@@ -182,6 +192,7 @@ public class MainQL {
                 GhiDocFile.writeToFile("KtraMD2.csv",quanLyNhanVien.nhanVienList);
 
             }
+
             else if (luaChon == 7) {
                 int soCMNDS = -1;
                 boolean check5 = false;
@@ -232,7 +243,7 @@ public class MainQL {
                 NhanVien nhanVien2 = new NhanVien(soCMNDM,tenM,loaiM,trangThaiM,luongM);
                 quanLyNhanVien.suasoCMND(soCMNDS,nhanVien2);
                 GhiDocFile.writeToFile("KtraMD2.csv",quanLyNhanVien.nhanVienList);
-                System.out.println("Bạn đã sửa thành công thông tin nhân viên trên");
+
 
             }
             else if (luaChon == 8) {
@@ -306,5 +317,6 @@ public class MainQL {
 
     public static final String ANSI_RED = "\u001B[31m";
     public static final String ANSI_RESET = "\u001B[0m";
+    public static final String ANSI_BLUE = "\u001B[34m";
 
 }

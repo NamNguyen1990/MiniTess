@@ -18,7 +18,7 @@ public class QuanLyNhanVien {
 
     public void them (NhanVien nhanVien) {
         nhanVienList.add(nhanVien);
-        System.out.println("Bạn đã thêm thành công 1 nhân viên mới");
+        System.out.println(ANSI_BLUE + "Bạn đã thêm thành công 1 nhân viên mới" + ANSI_RESET);
     }
 
     public void hienThi() {
@@ -28,7 +28,7 @@ public class QuanLyNhanVien {
             check = true;
         }
         if (check == false) {
-            System.out.println("Chưa có nhân viên nào được thêm mới!");
+            System.out.println(ANSI_RED + "Chưa có nhân viên nào được thêm mới!" + ANSI_RESET);
         }
     }
 
@@ -41,7 +41,7 @@ public class QuanLyNhanVien {
             }
         }
         if (check == false) {
-            System.out.println("Không có nhân viên này");
+            System.out.println(ANSI_RED + "Không có nhân viên này" + ANSI_RESET);
         }
     }
 
@@ -54,7 +54,7 @@ public class QuanLyNhanVien {
             }
         }
         if (check == false) {
-            System.out.println("Không có nhân viên này");
+            System.out.println(ANSI_RED + "Không có nhân viên nào có số CMND này" + ANSI_RESET);
         }
     }
 
@@ -67,7 +67,7 @@ public class QuanLyNhanVien {
             }
         }
         if (check == false) {
-            System.out.println("Không có nhân viên làm Fulltime");
+            System.out.println(ANSI_RED + "Không có nhân viên làm Fulltime" + ANSI_RESET);
         }
     }
 
@@ -80,7 +80,7 @@ public class QuanLyNhanVien {
             }
         }
         if (check == false) {
-            System.out.println("Không có nhân viên làm Parttime");
+            System.out.println(ANSI_RED + "Không có nhân viên làm Parttime" + ANSI_RESET);
         }
     }
 
@@ -96,9 +96,10 @@ public class QuanLyNhanVien {
     public void suaTen(String ten, NhanVien nhanVien) { // Cái này sửa theo tên nhập vào (chỉ có tác dụng khi tên là duy nhất)
         int indexOf = timKiemTen1(ten);
         if (indexOf == -1) {
-            System.out.println("Không có Nhân viên này");
+            System.out.println(ANSI_RED + "Không có Nhân viên này" + ANSI_RESET);
         } else {
             nhanVienList.set(indexOf, nhanVien);
+            System.out.println(ANSI_BLUE + "Bạn đã sửa thành công thông tin của nhân viên trên"+ ANSI_RESET);
         }
     }
 
@@ -114,21 +115,22 @@ public class QuanLyNhanVien {
     public void suasoCMND (int soCMND, NhanVien nhanVien) { // Cái này sửa theo số CMND nhập vào
         int indexOf = timKiemsoCMND(soCMND);
         if (indexOf == -1) {
-            System.out.println("Không có Nhân viên nào có số CMND này");
+            System.out.println(ANSI_RED + "Không có Nhân viên nào có số CMND này" + ANSI_RESET);
         } else {
             nhanVienList.set(indexOf, nhanVien);
+            System.out.println(ANSI_BLUE + "Bạn đã sửa thành công thông tin nhân viên trên" + ANSI_RESET);
         }
     }
 
     public void capNhatsoCMND (int soCMND) { // Cái này sửa theo số CMND nhập vào
         int indexOf = timKiemsoCMND(soCMND);
         if (indexOf == -1) {
-            System.out.println("Không có Nhân viên nào có số CMND này");
+            System.out.println(ANSI_RED + "Không có Nhân viên nào có số CMND này" + ANSI_RESET);
         } else {
             nhanVienList.get(indexOf).setTrangThai("Thôi việc");
             nhanVienList.get(indexOf).setLuong(0);
             nhanVienList.get(indexOf).setLoai("Thôi việc");
-            System.out.println("Bạn đã cập nhật thành công!");
+            System.out.println(ANSI_BLUE + "Bạn đã cập nhật thành công!" + ANSI_RESET);
         }
     }
 
@@ -141,41 +143,49 @@ public class QuanLyNhanVien {
                 sum1 += nhanVienList.get(i).getLuong();
             }
         }
-        System.out.println("Tổng lương của nhân viên Fulltime là: " + sum1);
+        System.out.println(ANSI_CYAN + "Tổng lương của nhân viên Fulltime là: " + sum1 + ANSI_RESET);
 
         for (int i=0; i<nhanVienList.size(); i++) {
             if (nhanVienList.get(i).getLoai().contains("Parttime")) {
                 sum2 += nhanVienList.get(i).getLuong();
             }
         }
-        System.out.println("Tổng lương của nhân viên Parttime là: " + sum2);
+        System.out.println(ANSI_CYAN + "Tổng lương của nhân viên Parttime là: " + sum2 + ANSI_RESET);
 
 
         for (int i=0; i<nhanVienList.size(); i++) {
                 sum3 += nhanVienList.get(i).getLuong();
         }
-        System.out.println("Tổng lương của toàn bộ nhân viên là: " + sum3);
+        System.out.println(ANSI_CYAN + "Tổng lương của toàn bộ nhân viên là: " + sum3 + ANSI_RESET);
 
     }
 
     public void xoaTen (String ten) {
         int indexOf = timKiemTen1(ten);
         if (indexOf == -1) {
-            System.out.println("Không có nhân viên nào có tên này!");
+            System.out.println(ANSI_RED + "Không có nhân viên nào có tên này!" + ANSI_RESET);
         } else {
             nhanVienList.remove(indexOf);
-            System.out.println("Nhân viên trên đã được xóa khỏi danh sách");
+            System.out.println(ANSI_BLUE + "Nhân viên trên đã được xóa khỏi danh sách" + ANSI_RESET);
         }
     }
 
     public void xoasoCMND (int soCMND) {
         int indexOf = timKiemsoCMND(soCMND);
         if (indexOf == -1) {
-            System.out.println("Không có nhân viên nào có số CMND này!");
+            System.out.println(ANSI_RED + "Không có nhân viên nào có số CMND này!"+ ANSI_RESET);
         } else {
             nhanVienList.remove(indexOf);
-            System.out.println("Nhân viên trên đã được xóa khỏi danh sách");
+            System.out.println(ANSI_BLUE + "Nhân viên trên đã được xóa khỏi danh sách" + ANSI_RESET);
         }
     }
+
+
+
+    public static final String ANSI_CYAN = "\u001B[36m";
+    public static final String ANSI_BLUE = "\u001B[34m";
+    public static final String ANSI_RED = "\u001B[31m";
+    public static final String ANSI_RESET = "\u001B[0m";
+
 
 }
